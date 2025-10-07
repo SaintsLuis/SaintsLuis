@@ -47,6 +47,5 @@ Visita mi portafolio para conocer más sobre mí y mis proyectos:
 - Me gusta construir soluciones que realmente ayuden a las personas  
 - Siempre aprendiendo nuevas tecnologías y mejores prácticas
 
-📫 **Contacto:** santosvluism@gmail.com
 
 📫 **Contacto:** santosvluism@gmail.com
