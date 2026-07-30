@@ -1,4 +1,4 @@
-# 👋 ¡Hola, soy Luis Manuel Santos Vargas!
+# 👋 ¡Hola, soy Luis Santos!
 
 🎓 Ingeniero de Software | Full Stack Web & Mobile Developer  
 📍 República Dominicana  
