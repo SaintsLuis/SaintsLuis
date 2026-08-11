@@ -1,9 +1,8 @@
 <h1 align="center">Hi, I'm Luis 👋</h1>
-<h3 align="center">Full-Stack Developer | Backend-Leaning | Clean Architecture & DDD</h3>
+<h3 align="center">Full-Stack Developer 
 
 <p align="center">
   🇩🇴 Santo Domingo, Dominican Republic &nbsp;·&nbsp;
-  🟢 Open for freelance & remote contract work
 </p>
 
 ---
