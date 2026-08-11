@@ -1,5 +1,5 @@
 <h1 align="center">Hi, I'm Luis 👋</h1>
-<h3 align="center">Full-Stack Developer 
+<h3 align="center">Full-Stack Developer</h3>
 
 <p align="center">
   🇩🇴 Santo Domingo, Dominican Republic &nbsp;·&nbsp;
@@ -11,7 +11,7 @@
 
 I'm a full-stack developer building reliable, well-structured systems — from backend APIs to modern front-end interfaces. I care about clean architecture, maintainable code, and shipping things that actually work in production, not just in theory.
 
-I currently work under my own brand, **Vargas Systems**, taking on freelance and contract projects, and I'm the developer (and now QA) behind **Caja UNAD**, a cash management system built for Universidad Adventista Dominicana.
+I've worked on freelance and contract projects for clients across different industries, and I'm the developer (and now QA) behind **Caja UNAD**, a cash management system built for Universidad Adventista Dominicana.
 
 - 🔭 Currently building **Caja UNAD** — a cash management system (NestJS + PostgreSQL + Clean Architecture)
 - 🧪 Recently stepped into a **QA role**, auditing test suites with Squash TM, Postman, Jest & Supertest
@@ -89,9 +89,6 @@ Full-stack e-commerce app with product management, cart, authentication, and adm
 POS (point-of-sale) system for cafés/restaurants — order management, product catalog, and streamlined checkout flow. Built with Next.js, Prisma, and Tailwind CSS.
 [Repo →](https://github.com/SaintsLuis/quioscoapp)
 
-**🔧 El Flaco RD — Auto Services**
-Web platform and business proposal for a New York–based mobile mechanic and detailing service. Stack: Astro + React + Tailwind CSS, with a custom black/yellow brand identity.
-
 ---
 
 ### 📫 Let's Work Together
@@ -100,7 +97,7 @@ I'm actively taking on freelance and remote projects — backend systems, full-s
 
 - 🌐 Portfolio: [luismsantos.vercel.app](https://luismsantos.vercel.app/)
 - 💼 Available via Upwork / Workana
-- 📍 Santo Domingo, Dominican Republic 
+- 📍 Santo Domingo, Dominican Republic (comfortable with async, remote-first collaboration)
 - 📧 santosvluism@gmail.com
 
 <p align="center"><i>Clean code, clear communication, deadlines met.</i></p>
