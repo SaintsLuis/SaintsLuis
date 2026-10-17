@@ -11,7 +11,7 @@
 
 I'm a full-stack developer building reliable, well-structured systems — from backend APIs to modern front-end interfaces. I care about clean architecture, maintainable code, and shipping things that actually work in production, not just in theory.
 
-I've worked on freelance and contract projects for clients across different industries, and I'm the developer (and now QA) behind **Caja UNAD**, a cash management system built for Universidad Adventista Dominicana.
+I've worked on freelance and contract projects for clients across different industries.
 
 - 🔭 Currently building **Caja UNAD** — a cash management system (NestJS + PostgreSQL + Clean Architecture)
 - 🧪 Recently stepped into a **QA role**, auditing test suites with Squash TM, Postman, Jest & Supertest
