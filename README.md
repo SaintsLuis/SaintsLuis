@@ -99,9 +99,8 @@ POS (point-of-sale) system for cafés/restaurants — order management, product 
 
 I'm actively taking on freelance and remote projects — backend systems, full-stack apps, or focused fixes/features on existing codebases.
 
-- 🌐 Portfolio: [luismsantos.vercel.app](https://luismsantos.vercel.app/)
-- 💼 Available via Upwork / Workana
-- 📍 Santo Domingo, Dominican Republic (comfortable with async, remote-first collaboration)
+- 🌐 Portfolio: [luismsantos.vercel.app](https://santosvluis.vercel.app/)
+- 📍 Dominican Republic (comfortable with async, remote-first collaboration)
 - 📧 santosvluism@gmail.com
 
 <p align="center"><i>Clean code, clear communication, deadlines met.</i></p>
