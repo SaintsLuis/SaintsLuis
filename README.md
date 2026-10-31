@@ -112,8 +112,8 @@ Search, cart, user accounts, PayPal payments, and an admin panel for products an
 
 <div align="center">
 
-<img src="./assets/stats.svg" alt="GitHub stats" height="200"/>
-<img src="./assets/languages.svg" alt="Most used languages" height="200"/>
+<img src="https://raw.githubusercontent.com/SaintsLuis/SaintsLuis/main/assets/stats.svg" alt="GitHub stats" height="200"/>
+<img src="https://raw.githubusercontent.com/SaintsLuis/SaintsLuis/main/assets/languages.svg" alt="Most used languages" height="200"/>
 
 <sub>Generated daily from my GitHub data by a workflow in this repo.</sub>
 
