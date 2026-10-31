@@ -108,6 +108,19 @@ Search, cart, user accounts, PayPal payments, and an admin panel for products an
 
 ---
 
+## 📊 GitHub stats
+
+<div align="center">
+
+<img src="./assets/stats.svg" alt="GitHub stats" height="200"/>
+<img src="./assets/languages.svg" alt="Most used languages" height="200"/>
+
+<sub>Generated daily from my GitHub data by a workflow in this repo.</sub>
+
+</div>
+
+---
+
 ## 🧠 How I work
 
 I like building apps that stay easy to change as they grow. This is how I approach them:
