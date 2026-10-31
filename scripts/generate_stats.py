@@ -19,9 +19,10 @@ from datetime import date
 API = "https://api.github.com"
 README = os.path.join(os.path.dirname(__file__), "..", "README.md")
 START, END = "<!--START_STATS-->", "<!--END_STATS-->"
-LEVEL = {"NONE": "⬛", "FIRST_QUARTER": "🟩", "SECOND_QUARTER": "🟨",
-         "THIRD_QUARTER": "🟧", "FOURTH_QUARTER": "🟥"}
-WEEKS_SHOWN = 26
+
+# Only count the languages I actually write by hand. GitHub also reports generated or
+# platform code (e.g. LLVM, Java/Kotlin from android/ folders), which would skew the result.
+LANGUAGES = {"TypeScript", "JavaScript", "C#", "HTML", "CSS", "SCSS", "Astro"}
 
 GQL = """
 query($login:String!){ user(login:$login){ contributionsCollection{
@@ -95,72 +96,40 @@ def streaks(days):
     return current, longest
 
 
-def heatmap(weeks):
-    weeks = weeks[-WEEKS_SHOWN:]
-    names = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    rows = []
-    for wd in range(7):
-        cells = []
-        for w in weeks:
-            day = next((d for d in w["contributionDays"] if d["weekday"] == wd), None)
-            cells.append(LEVEL.get(day["contributionLevel"], "⬛") if day else "⬛")
-        label = names[wd] if wd in (1, 3, 5) else "   "
-        rows.append(f"{label} {''.join(cells)}")
-    return "\n".join(rows)
-
-
-def bar(pct, width=14):
-    filled = round(width * pct / 100)
-    return "█" * filled + "░" * (width - filled)
+def plural(n, word):
+    return f"{n} {word}" if n == 1 else f"{n} {word}s"
 
 
 def render(d):
-    out = ["<div align=\"center\">", ""]
-    out += ["| 📦 Public repos | ⭐ Stars earned | 👥 Followers | 🍴 Forks |",
-            "|:-:|:-:|:-:|:-:|",
-            f"| **{d['repos']}** | **{d['stars']}** | **{d['followers']}** | **{d['forks']}** |", ""]
     c = d["contrib"]
+    heads = ["📦 Repos", "⭐ Stars", "👥 Followers"]
+    vals = [d["repos"], d["stars"], d["followers"]]
     if c:
         cal = c["contributionCalendar"]
         days = [x for w in cal["weeks"] for x in w["contributionDays"]]
         cur, longest = streaks(days)
-        out += ["| 🔥 Contributions (last year) | 💾 Commits | 🔀 Pull requests | 🐞 Issues | 👀 Reviews | ⚡ Current streak | 🏆 Longest streak |",
-                "|:-:|:-:|:-:|:-:|:-:|:-:|:-:|",
-                f"| **{cal['totalContributions']}** | **{c['totalCommitContributions']}** | "
-                f"**{c['totalPullRequestContributions']}** | **{c['totalIssueContributions']}** | "
-                f"**{c['totalPullRequestReviewContributions']}** | **{cur} {"day" if cur == 1 else "days"}** | **{longest} {"day" if longest == 1 else "days"}** |", ""]
-        out += [f"**Contribution activity** · last {WEEKS_SHOWN} weeks", "", "```text",
-                heatmap(cal["weeks"]), "```",
-                "<sub>⬛ none · 🟩 low · 🟨 medium · 🟧 high · 🟥 very high</sub>", ""]
-    total = sum(d["langs"].values()) or 1
-    top = d["langs"].most_common(6)
-    if top:
-        out += ["**Most used languages**", "", "| Language | Usage | |", "|:--|:--|--:|"]
-        for name, n in top:
-            pct = 100 * n / total
-            out.append(f"| {name} | `{bar(pct)}` | {pct:.1f}% |")
-        out.append("")
-    out += [f"<sub>Updated automatically on {date.today().isoformat()} by a GitHub Actions workflow in this repo.</sub>",
-            "", "</div>"]
+        heads += ["🔥 Contributions (last year)", "⚡ Streak", "🏆 Best streak"]
+        vals += [cal["totalContributions"], plural(cur, "day"), plural(longest, "day")]
+    out = ['<div align="center">', "",
+           "| " + " | ".join(heads) + " |",
+           "|" + ":-:|" * len(heads),
+           "| " + " | ".join(f"**{v}**" for v in vals) + " |", ""]
+    langs = Counter({k: v for k, v in d["langs"].items() if k in LANGUAGES})
+    total = sum(langs.values())
+    if total:
+        parts = [f"{name} **{100 * n / total:.0f}%**" for name, n in langs.most_common(5)]
+        out += ["**Top languages:** " + " · ".join(parts), ""]
+    out += [f"<sub>Updated automatically on {date.today().isoformat()}.</sub>", "", "</div>"]
     return "\n".join(out)
 
 
 def main():
     if "--demo" in sys.argv:
-        import random
-        random.seed(3)
-        weeks = []
-        for w in range(53):
-            weeks.append({"contributionDays": [
-                {"date": f"2026-01-{(w*7+i)%28+1:02d}", "weekday": i,
-                 "contributionCount": (n := random.choice([0, 0, 0, 1, 3, 6, 11])),
-                 "contributionLevel": ["NONE", "FIRST_QUARTER", "SECOND_QUARTER", "THIRD_QUARTER", "FOURTH_QUARTER"][0 if n == 0 else 1 if n < 2 else 2 if n < 4 else 3 if n < 8 else 4]}
-                for i in range(7)]})
-        d = {"repos": 12, "stars": 6, "followers": 5, "forks": 2,
-             "langs": Counter({"TypeScript": 60000, "JavaScript": 25000, "C#": 18000, "HTML": 9000}),
-             "contrib": {"totalCommitContributions": 480, "totalPullRequestContributions": 22,
-                         "totalIssueContributions": 4, "totalPullRequestReviewContributions": 7,
-                         "contributionCalendar": {"totalContributions": 513, "weeks": weeks}}}
+        days = [{"contributionCount": n} for n in [0, 2, 3, 0, 1, 4, 0, 0, 5, 1]]
+        d = {"repos": 29, "stars": 6, "followers": 5, "forks": 2,
+             "langs": Counter({"TypeScript": 60000, "JavaScript": 25000, "LLVM": 90000, "Java": 70000,
+                               "C#": 18000, "HTML": 9000}),
+             "contrib": {"contributionCalendar": {"totalContributions": 50, "weeks": [{"contributionDays": days}]}}}
         print(render(d))
         return
     d = collect(os.environ["OWNER"], os.environ["GITHUB_TOKEN"])
