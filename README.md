@@ -15,7 +15,6 @@
 <br/><br/>
 
 <img src="https://komarev.com/ghpvc/?username=SaintsLuis&label=Profile%20views&color=2563eb&style=flat-square" alt="Profile views"/>
-<img src="https://img.shields.io/github/followers/SaintsLuis?style=flat-square&logo=github&color=2563eb&labelColor=0b1020" alt="GitHub followers"/>
 
 </div>
 
@@ -106,26 +105,6 @@ Search, cart, user accounts, PayPal payments, and an admin panel for products an
 
 </details>
 
----
-
-## 📊 GitHub stats
-
-<!--START_STATS-->
-<div align="center">
-
-| 📦 Repos | ⭐ Stars | 👥 Followers | 🔥 Contributions (last year) | ⚡ Streak | 🏆 Best streak |
-|:-:|:-:|:-:|:-:|:-:|:-:|
-| **29** | **6** | **5** | **52** | **1 day** | **2 days** |
-
-**Top languages:** TypeScript **73%** · JavaScript **10%** · HTML **5%** · C# **4%** · Astro **4%**
-
-<sub>Updated automatically on 2026-10-31.</sub>
-
-</div>
-<!--END_STATS-->
-
----
-
 ## 🧠 How I work
 
 I like building apps that stay easy to change as they grow. This is how I approach them:
@@ -145,6 +124,24 @@ flowchart LR
     C --> D((Domain))
     I[Infrastructure<br/>PostgreSQL · Prisma · Payments] --> D
 ```
+
+---
+
+---
+
+## 📊 GitHub stats
+
+<!--START_STATS-->
+<div align="center">
+
+| 📦 Repos | ⭐ Stars | 🔥 Contributions (last year) | ⚡ Streak | 🏆 Best streak |
+|:-:|:-:|:-:|:-:|:-:|
+| **29** | **6** | **52** | **1 day** | **2 days** |
+
+<sub>Updated automatically on 2026-10-31.</sub>
+
+</div>
+<!--END_STATS-->
 
 ---
 
