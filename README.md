@@ -113,39 +113,13 @@ Search, cart, user accounts, PayPal payments, and an admin panel for products an
 <!--START_STATS-->
 <div align="center">
 
-| 📦 Public repos | ⭐ Stars earned | 👥 Followers | 🍴 Forks |
-|:-:|:-:|:-:|:-:|
-| **29** | **6** | **5** | **2** |
+| 📦 Repos | ⭐ Stars | 👥 Followers | 🔥 Contributions (last year) | ⚡ Streak | 🏆 Best streak |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| **29** | **6** | **5** | **52** | **1 day** | **2 days** |
 
-| 🔥 Contributions (last year) | 💾 Commits | 🔀 Pull requests | 🐞 Issues | 👀 Reviews | ⚡ Current streak | 🏆 Longest streak |
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| **50** | **41** | **6** | **0** | **0** | **1 day** | **2 days** |
+**Top languages:** TypeScript **73%** · JavaScript **10%** · HTML **5%** · C# **4%** · Astro **4%**
 
-**Contribution activity** · last 26 weeks
-
-```text
-    ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
-Mon ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
-    ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
-Wed ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
-    ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
-Fri ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
-    ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
-```
-<sub>⬛ none · 🟩 low · 🟨 medium · 🟧 high · 🟥 very high</sub>
-
-**Most used languages**
-
-| Language | Usage | |
-|:--|:--|--:|
-| LLVM | `███████░░░░░░░` | 48.0% |
-| Java | `█████░░░░░░░░░` | 33.7% |
-| TypeScript | `██░░░░░░░░░░░░` | 12.9% |
-| JavaScript | `░░░░░░░░░░░░░░` | 1.8% |
-| HTML | `░░░░░░░░░░░░░░` | 0.8% |
-| C# | `░░░░░░░░░░░░░░` | 0.7% |
-
-<sub>Updated automatically on 2026-10-31 by a GitHub Actions workflow in this repo.</sub>
+<sub>Updated automatically on 2026-10-31.</sub>
 
 </div>
 <!--END_STATS-->
