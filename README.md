@@ -1,106 +1,145 @@
-<h1 align="center">Hi, I'm Luis 👋</h1>
-<h3 align="center">Full-Stack Developer</h3>
+<div align="center">
 
-<p align="center">
-  🇩🇴 Santo Domingo, Dominican Republic &nbsp;·&nbsp;
-</p>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0b1020,100:2563eb&height=200&section=header&text=Luis%20Santos&fontSize=58&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Ingeniero%20de%20Software%20Full-Stack&descAlignY=60&descSize=20" alt="Luis Santos" width="100%"/>
 
-<p align="center">
-  🌐 https://santosvluis.vercel.app/
-</p>
+<a href="https://github.com/SaintsLuis">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1200&color=3B82F6&center=true&vCenter=true&width=640&lines=%C2%A1Hola%2C+soy+Luis+Santos!+%F0%9F%91%8B;Ingeniero+de+Software+Full-Stack;Web+%2B+M%C3%B3vil+%2B+SaaS;NestJS+%C2%B7+React+%C2%B7+Next.js+%C2%B7+TypeScript;Siempre+aprendiendo+tecnolog%C3%ADas+nuevas" alt="Typing SVG" />
+</a>
 
----
+<br/>
 
-### 🚀 About Me
+<a href="https://santosvluis.vercel.app"><img src="https://img.shields.io/badge/Portafolio-santosvluis.vercel.app-2563eb?style=for-the-badge&logo=vercel&logoColor=white" alt="Portafolio"/></a>
+<a href="https://www.linkedin.com/in/santosvluis/"><img src="https://img.shields.io/badge/LinkedIn-santosvluis-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+<a href="mailto:santosvluism@gmail.com"><img src="https://img.shields.io/badge/Email-Cont%C3%A1ctame-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
 
-I'm a full-stack developer building reliable, well-structured systems — from backend APIs to modern front-end interfaces. I care about clean architecture, maintainable code, and shipping things that actually work in production, not just in theory.
+<br/><br/>
 
-I've worked on freelance and contract projects for clients across different industries.
+<img src="https://komarev.com/ghpvc/?username=SaintsLuis&label=Visitas&color=2563eb&style=flat-square" alt="Visitas al perfil"/>
 
-- 🔭 Currently building **Caja UNAD** — a cash management system (NestJS + PostgreSQL + Clean Architecture)
-- 🧪 Recently stepped into a **QA role**, auditing test suites with Squash TM, Postman, Jest & Supertest
-- 🌱 Exploring **DeFi tooling** (mempool/liquidity sniping concepts) at an exploratory level
-- 💼 Open to **freelance, contract, and remote opportunities**
-- 🌎 Based in Santo Domingo — comfortable working async with international clients
+</div>
 
 ---
 
-### 🛠️ Tech Stack
+## 👨‍💻 Sobre mí
 
-**Backend**
-![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-![C#](https://img.shields.io/badge/C%23-239120?style=flat&logo=csharp&logoColor=white)
-![.NET](https://img.shields.io/badge/.NET-512BD4?style=flat&logo=dotnet&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-
-**Frontend**
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat&logo=react&logoColor=61DAFB)
-![Astro](https://img.shields.io/badge/Astro-BC52EE?style=flat&logo=astro&logoColor=white)
-![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
-
-**Data & Infra**
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
-![TypeORM](https://img.shields.io/badge/TypeORM-FE0803?style=flat&logo=typeorm&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
-
-**Testing & QA**
-![Jest](https://img.shields.io/badge/Jest-C21325?style=flat&logo=jest&logoColor=white)
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
+```ts
+const luis = {
+  rol: "Ingeniero de Software Full-Stack",
+  ubicacion: "Santo Domingo, República Dominicana 🇩🇴",
+  idiomas: ["Español"],
+  trabajoCon: ["Web", "Móvil", "SaaS"],
+  principios: ["Clean Architecture", "DDD", "Código mantenible y probado"],
+  abiertoA: "Oportunidades full-stack: remoto, híbrido o en Santo Domingo",
+  siempre: "Aprendiendo tecnologías nuevas",
+};
+```
 
 ---
 
-### 💡 What I Work With
+## 🛠️ Stack
 
-- **Architecture:** Clean Architecture, Domain-Driven Design (DDD), layered systems (domain / application / infrastructure / presentation)
-- **Backend:** NestJS, ASP.NET Core (C#), REST API design, PostgreSQL, Redis, TypeORM
-- **Frontend:** React, Next.js, Angular, Astro, Tailwind CSS, React Native
-- **DevOps basics:** Docker, Proxmox/LXC environments, reverse proxy (Nginx/Caddy) troubleshooting
-- **QA:** Manual & automated test auditing, API testing (Postman, Supertest), Jest unit testing
+<div align="center">
 
----
+<img src="https://skillicons.dev/icons?i=ts,js,react,nextjs,angular,nodejs,nestjs,cs,dotnet&perline=9" alt="Lenguajes y frameworks"/>
+<br/>
+<img src="https://skillicons.dev/icons?i=postgres,mongodb,prisma,docker,tailwind,astro,git&perline=7" alt="Datos y herramientas"/>
 
-### 📌 Featured Projects
-
-**🏦 Caja UNAD**
-Cash management system for Universidad Adventista Dominicana. Built with NestJS, PostgreSQL, and Clean Architecture/DDD patterns, handling distributed infrastructure (separate services for DB, backend, and cache) and legacy system migration (SQL Server → PostgreSQL).
-
-**🩺 Medical Date** — *Capstone/Thesis Project*
-Full medical appointment management system spanning web, mobile, and backend — built as my degree's capstone project.
-- Frontend: [medical-date_frontend](https://github.com/SaintsLuis/medical-date_frontend)
-- Backend: [medical-date_backend](https://github.com/SaintsLuis/medical-date_backend)
-- Mobile: [medical-date_mobile](https://github.com/SaintsLuis/medical-date_mobile)
-- Live: [medical-date-landing-page.vercel.app](https://medical-date-landing-page.vercel.app/)
-- Stack: Next.js, React Native, NestJS, PostgreSQL, Prisma, Docker
-
-**💰 Loan Management App** *(Private — available for sale/licensing)*
-Web application for loan management and route-based debt collection: client tracking, installment schedules, payment recording, and daily/route closing reports. Built with Next.js.
-*Contact for a demo or licensing inquiry.*
-
-**💸 Money Transfer API** *(C# / .NET)*
-REST API for money transfers between multi-currency accounts. Built with ASP.NET Core (.NET 10), Entity Framework Core, and SQL Server — demonstrates backend design outside the Node.js ecosystem.
-[Repo →](https://github.com/SaintsLuis/money-transfer-api)
-
-**🛒 Teslo Shop**
-Full-stack e-commerce app with product management, cart, authentication, and admin panel. Built with Next.js and TypeScript.
-[Repo →](https://github.com/SaintsLuis/teslo-shop-nextjs)
-
-**☕ QuioscoApp**
-POS (point-of-sale) system for cafés/restaurants — order management, product catalog, and streamlined checkout flow. Built with Next.js, Prisma, and Tailwind CSS.
-[Repo →](https://github.com/SaintsLuis/quioscoapp)
+</div>
 
 ---
 
-### 📫 Let's Work Together
+## 🚀 Proyectos principales
 
-I'm actively taking on freelance and remote projects — backend systems, full-stack apps, or focused fixes/features on existing codebases.
+> Despliega cada proyecto para ver más detalles 👇 · Más en mi [portafolio](https://santosvluis.vercel.app)
 
-- 🌐 Portfolio: [luismsantos.vercel.app](https://santosvluis.vercel.app/)
-- 📍 Dominican Republic (comfortable with async, remote-first collaboration)
-- 📧 santosvluism@gmail.com
+<details>
+<summary><b>🏥 Medical Date</b> — plataforma médica completa (API + web + móvil)</summary>
+<br/>
 
-<p align="center"><i>Clean code, clear communication, deadlines met.</i></p>
+Los pacientes agendan citas desde el celular; médicos y secretarías gestionan citas, historiales, recetas y facturación, con permisos por rol.
+
+- **Demo:** [medical-date-landing-page.vercel.app](https://medical-date-landing-page.vercel.app)
+- **Código:** [frontend](https://github.com/SaintsLuis/medical-date_frontend) · [landing page](https://github.com/SaintsLuis/medical-date_landing-page)
+- **Stack:** Next.js · React Native · NestJS · PostgreSQL · Prisma · Docker
+
+</details>
+
+<details>
+<summary><b>💼 CarteraGo</b> — reemplaza el cuaderno de un prestamista</summary>
+<br/>
+
+Los cobradores registran pagos desde el celular, el dueño los ve al instante y el cierre diario cuadra automáticamente.
+
+- **Demo:** [carterago.vercel.app](https://carterago.vercel.app)
+
+</details>
+
+<details>
+<summary><b>🍽️ Brasa &amp; Co.</b> — kiosco de autoservicio para restaurantes</summary>
+<br/>
+
+El cliente pide, personaliza y paga en pantalla; la cocina recibe el pedido de inmediato. El servidor recalcula los precios, así que los totales no se pueden manipular desde el cliente.
+
+- **Código:** [restaurant-kiosk](https://github.com/SaintsLuis/restaurant-kiosk)
+
+</details>
+
+<details>
+<summary><b>🛍️ Teslo Shop</b> — tienda en línea de punta a punta</summary>
+<br/>
+
+Búsqueda, carrito, cuentas de usuario, pagos con PayPal y panel de administración para productos y pedidos.
+
+- **Demo:** [teslo-shop-lms.vercel.app](https://teslo-shop-lms.vercel.app)
+
+</details>
+
+---
+
+## 🧠 Cómo trabajo
+
+Me gusta construir apps que sigan siendo fáciles de cambiar cuando crecen. Mi forma de pensarlas:
+
+1. **Primero el negocio, después la tecnología.** Modelo el dominio (citas, pagos, cierres de caja) con DDD antes de elegir herramientas.
+2. **Clean Architecture.** Las reglas del negocio no dependen del framework ni de la base de datos: las dependencias apuntan hacia adentro. Si cambia el proveedor de pagos o la base de datos, el núcleo no se reescribe.
+3. **El servidor es la fuente de verdad.** Validaciones, permisos y cálculos (como los precios del kiosco) viven en el backend, no en el cliente.
+4. **Un backend, varios clientes.** Una misma API alimenta el panel web y la app móvil, así las reglas no se duplican.
+5. **SOLID y módulos pequeños.** Cada módulo hace una cosa, se puede probar solo y se puede crecer sin romper lo demás.
+6. **Entornos reproducibles.** Docker y migraciones versionadas para que levantar el proyecto sea igual en cualquier máquina.
+
+```mermaid
+flowchart LR
+    W[Web · Next.js] --> A
+    M[Móvil · React Native] --> A
+    A[API · NestJS] --> C[Casos de uso]
+    C --> D((Dominio))
+    I[Infraestructura<br/>PostgreSQL · Prisma · Pagos] --> D
+```
+
+---
+
+## 📊 Estadísticas de GitHub
+
+<div align="center">
+
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=SaintsLuis&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0b1020" alt="Estadísticas de GitHub"/>
+<img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=SaintsLuis&layout=compact&theme=tokyonight&hide_border=true&bg_color=0b1020" alt="Lenguajes más usados"/>
+
+<br/>
+
+<img src="https://streak-stats.demolab.com?user=SaintsLuis&theme=tokyonight&hide_border=true&background=0b1020" alt="Racha de contribuciones"/>
+
+</div>
+
+---
+
+<div align="center">
+
+### 📫 ¿Hablamos?
+
+Estoy abierto a oportunidades como desarrollador full-stack.
+Escríbeme por [LinkedIn](https://www.linkedin.com/in/santosvluis/) o a [santosvluism@gmail.com](mailto:santosvluism@gmail.com).
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563eb,100:0b1020&height=100&section=footer" width="100%" alt=""/>
+
+</div>
