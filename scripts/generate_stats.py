@@ -1,46 +1,63 @@
 #!/usr/bin/env python3
-"""Generate self-hosted GitHub stats cards (SVG) for the profile README.
+"""Write live GitHub stats into the profile README as plain Markdown.
 
-Runs inside GitHub Actions with the built-in GITHUB_TOKEN, so the README never
-depends on third-party stats services. Usage:
+No images and no third-party services: the numbers come from the GitHub API
+(with the workflow's built-in GITHUB_TOKEN) and are written between the
+<!--START_STATS--> and <!--END_STATS--> markers in README.md.
+
     python scripts/generate_stats.py          # real data (needs GITHUB_TOKEN, OWNER)
-    python scripts/generate_stats.py --demo   # sample data, for previewing the design
+    python scripts/generate_stats.py --demo   # sample data, prints the block
 """
 import json
 import os
+import re
 import sys
 import urllib.request
 from collections import Counter
-from html import escape
+from datetime import date
 
 API = "https://api.github.com"
-OUT = os.path.join(os.path.dirname(__file__), "..", "assets")
+README = os.path.join(os.path.dirname(__file__), "..", "README.md")
+START, END = "<!--START_STATS-->", "<!--END_STATS-->"
+LEVEL = {"NONE": "⬛", "FIRST_QUARTER": "🟩", "SECOND_QUARTER": "🟨",
+         "THIRD_QUARTER": "🟧", "FOURTH_QUARTER": "🟥"}
+WEEKS_SHOWN = 26
 
-BG, BORDER = "#0b1020", "#1e293b"
-TITLE, TEXT, MUTED, ACCENT = "#ffffff", "#cbd5e1", "#94a3b8", "#3b82f6"
-LANG_COLORS = {
-    "TypeScript": "#3178c6", "JavaScript": "#f1e05a", "C#": "#178600",
-    "HTML": "#e34c26", "CSS": "#563d7c", "Astro": "#ff5a03", "Python": "#3572a5",
-    "SCSS": "#c6538c", "Dockerfile": "#384d54", "Shell": "#89e051",
-}
-FALLBACK = ["#60a5fa", "#a78bfa", "#34d399", "#f472b6", "#fbbf24", "#94a3b8"]
+GQL = """
+query($login:String!){ user(login:$login){ contributionsCollection{
+  totalCommitContributions totalPullRequestContributions
+  totalIssueContributions totalPullRequestReviewContributions
+  contributionCalendar{ totalContributions weeks{ contributionDays{
+    date contributionCount contributionLevel weekday } } } } } }
+"""
 
 
-def get(path, token):
+def _request(url, token, data=None):
     req = urllib.request.Request(
-        f"{API}{path}",
+        url, data=data,
         headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json",
-                 "User-Agent": "profile-stats"},
-    )
+                 "User-Agent": "profile-stats", "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=30) as r:
         return json.load(r)
 
 
+def rest(path, token):
+    return _request(f"{API}{path}", token)
+
+
+def graphql(login, token):
+    body = json.dumps({"query": GQL, "variables": {"login": login}}).encode()
+    out = _request(f"{API}/graphql", token, body)
+    if out.get("errors"):
+        raise RuntimeError(out["errors"])
+    return out["data"]["user"]["contributionsCollection"]
+
+
 def collect(owner, token):
-    user = get(f"/users/{owner}", token)
+    user = rest(f"/users/{owner}", token)
     repos, page = [], 1
     while True:
-        chunk = get(f"/users/{owner}/repos?per_page=100&type=owner&page={page}", token)
+        chunk = rest(f"/users/{owner}/repos?per_page=100&type=owner&page={page}", token)
         repos += chunk
         if len(chunk) < 100:
             break
@@ -49,72 +66,111 @@ def collect(owner, token):
     langs = Counter()
     for r in own:
         try:
-            langs.update(get(f"/repos/{owner}/{r['name']}/languages", token))
-        except Exception:
-            pass
-    return {
-        "name": user.get("name") or owner,
-        "repos": user["public_repos"],
-        "followers": user["followers"],
-        "stars": sum(r["stargazers_count"] for r in own),
-        "forks": sum(r["forks_count"] for r in own),
-        "langs": langs,
-    }
+            langs.update(rest(f"/repos/{owner}/{r['name']}/languages", token))
+        except Exception as e:  # keep going if one repo fails
+            print("languages failed for", r["name"], e)
+    data = {"repos": user["public_repos"], "followers": user["followers"],
+            "stars": sum(r["stargazers_count"] for r in own),
+            "forks": sum(r["forks_count"] for r in own), "langs": langs, "contrib": None}
+    try:
+        data["contrib"] = graphql(owner, token)
+    except Exception as e:
+        print("contributions unavailable:", e)
+    return data
 
 
-def card(w, h, title, body):
-    return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="{escape(title)}">'
-        f'<style>text{{font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif}}</style>'
-        f'<rect x="0.5" y="0.5" width="{w-1}" height="{h-1}" rx="10" fill="{BG}" stroke="{BORDER}"/>'
-        f'<text x="24" y="38" font-size="18" font-weight="700" fill="{TITLE}">{escape(title)}</text>'
-        f'<rect x="24" y="48" width="36" height="3" rx="1.5" fill="{ACCENT}"/>{body}</svg>'
-    )
+def streaks(days):
+    longest = run = 0
+    for d in days:
+        run = run + 1 if d["contributionCount"] > 0 else 0
+        longest = max(longest, run)
+    current = 0
+    for d in reversed(days):
+        if d["contributionCount"] > 0:
+            current += 1
+        elif d is days[-1]:
+            continue  # today may not have contributions yet
+        else:
+            break
+    return current, longest
 
 
-def stats_svg(d):
-    rows = [("Public repositories", d["repos"]), ("Stars earned", d["stars"]),
-            ("Followers", d["followers"]), ("Forks", d["forks"])]
-    body = ""
-    for i, (label, value) in enumerate(rows):
-        y = 84 + i * 30
-        body += f'<text x="24" y="{y}" font-size="14" fill="{TEXT}">{escape(label)}</text>'
-        body += f'<text x="326" y="{y}" font-size="14" font-weight="700" fill="{TITLE}" text-anchor="end">{value}</text>'
-    return card(350, 200, "GitHub stats", body)
+def heatmap(weeks):
+    weeks = weeks[-WEEKS_SHOWN:]
+    names = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    rows = []
+    for wd in range(7):
+        cells = []
+        for w in weeks:
+            day = next((d for d in w["contributionDays"] if d["weekday"] == wd), None)
+            cells.append(LEVEL.get(day["contributionLevel"], "⬛") if day else "⬛")
+        label = names[wd] if wd in (1, 3, 5) else "   "
+        rows.append(f"{label} {''.join(cells)}")
+    return "\n".join(rows)
 
 
-def langs_svg(d):
+def bar(pct, width=14):
+    filled = round(width * pct / 100)
+    return "█" * filled + "░" * (width - filled)
+
+
+def render(d):
+    out = ["<div align=\"center\">", ""]
+    out += ["| 📦 Public repos | ⭐ Stars earned | 👥 Followers | 🍴 Forks |",
+            "|:-:|:-:|:-:|:-:|",
+            f"| **{d['repos']}** | **{d['stars']}** | **{d['followers']}** | **{d['forks']}** |", ""]
+    c = d["contrib"]
+    if c:
+        cal = c["contributionCalendar"]
+        days = [x for w in cal["weeks"] for x in w["contributionDays"]]
+        cur, longest = streaks(days)
+        out += ["| 🔥 Contributions (last year) | 💾 Commits | 🔀 Pull requests | 🐞 Issues | 👀 Reviews | ⚡ Current streak | 🏆 Longest streak |",
+                "|:-:|:-:|:-:|:-:|:-:|:-:|:-:|",
+                f"| **{cal['totalContributions']}** | **{c['totalCommitContributions']}** | "
+                f"**{c['totalPullRequestContributions']}** | **{c['totalIssueContributions']}** | "
+                f"**{c['totalPullRequestReviewContributions']}** | **{cur} {"day" if cur == 1 else "days"}** | **{longest} {"day" if longest == 1 else "days"}** |", ""]
+        out += [f"**Contribution activity** · last {WEEKS_SHOWN} weeks", "", "```text",
+                heatmap(cal["weeks"]), "```",
+                "<sub>⬛ none · 🟩 low · 🟨 medium · 🟧 high · 🟥 very high</sub>", ""]
     total = sum(d["langs"].values()) or 1
     top = d["langs"].most_common(6)
-    body, x, bar_w = "", 24, 302
-    body += f'<clipPath id="c"><rect x="24" y="66" width="{bar_w}" height="10" rx="5"/></clipPath><g clip-path="url(#c)">'
-    for i, (name, n) in enumerate(top):
-        color = LANG_COLORS.get(name, FALLBACK[i % len(FALLBACK)])
-        w = bar_w * n / total
-        body += f'<rect x="{x:.1f}" y="66" width="{w:.1f}" height="10" fill="{color}"/>'
-        x += w
-    body += "</g>"
-    for i, (name, n) in enumerate(top):
-        color = LANG_COLORS.get(name, FALLBACK[i % len(FALLBACK)])
-        col, row = i % 2, i // 2
-        cx, cy = 24 + col * 160, 104 + row * 28
-        body += f'<circle cx="{cx+5}" cy="{cy-4}" r="5" fill="{color}"/>'
-        body += f'<text x="{cx+16}" y="{cy}" font-size="13" fill="{TEXT}">{escape(name)} <tspan fill="{MUTED}">{100*n/total:.1f}%</tspan></text>'
-    return card(350, 200, "Most used languages", body)
+    if top:
+        out += ["**Most used languages**", "", "| Language | Usage | |", "|:--|:--|--:|"]
+        for name, n in top:
+            pct = 100 * n / total
+            out.append(f"| {name} | `{bar(pct)}` | {pct:.1f}% |")
+        out.append("")
+    out += [f"<sub>Updated automatically on {date.today().isoformat()} by a GitHub Actions workflow in this repo.</sub>",
+            "", "</div>"]
+    return "\n".join(out)
 
 
 def main():
     if "--demo" in sys.argv:
-        d = {"name": "Demo", "repos": 12, "followers": 34, "stars": 56, "forks": 7,
-             "langs": Counter({"TypeScript": 60000, "JavaScript": 25000, "C#": 18000, "HTML": 9000, "CSS": 5000, "Astro": 3000})}
-    else:
-        d = collect(os.environ["OWNER"], os.environ["GITHUB_TOKEN"])
-    os.makedirs(OUT, exist_ok=True)
-    out_dir = os.environ.get("STATS_OUT", OUT)
-    os.makedirs(out_dir, exist_ok=True)
-    open(os.path.join(out_dir, "stats.svg"), "w", encoding="utf-8").write(stats_svg(d))
-    open(os.path.join(out_dir, "languages.svg"), "w", encoding="utf-8").write(langs_svg(d))
-    print("generated", out_dir)
+        import random
+        random.seed(3)
+        weeks = []
+        for w in range(53):
+            weeks.append({"contributionDays": [
+                {"date": f"2026-01-{(w*7+i)%28+1:02d}", "weekday": i,
+                 "contributionCount": (n := random.choice([0, 0, 0, 1, 3, 6, 11])),
+                 "contributionLevel": ["NONE", "FIRST_QUARTER", "SECOND_QUARTER", "THIRD_QUARTER", "FOURTH_QUARTER"][0 if n == 0 else 1 if n < 2 else 2 if n < 4 else 3 if n < 8 else 4]}
+                for i in range(7)]})
+        d = {"repos": 12, "stars": 6, "followers": 5, "forks": 2,
+             "langs": Counter({"TypeScript": 60000, "JavaScript": 25000, "C#": 18000, "HTML": 9000}),
+             "contrib": {"totalCommitContributions": 480, "totalPullRequestContributions": 22,
+                         "totalIssueContributions": 4, "totalPullRequestReviewContributions": 7,
+                         "contributionCalendar": {"totalContributions": 513, "weeks": weeks}}}
+        print(render(d))
+        return
+    d = collect(os.environ["OWNER"], os.environ["GITHUB_TOKEN"])
+    block = f"{START}\n{render(d)}\n{END}"
+    text = open(README, encoding="utf-8").read()
+    pattern = re.compile(re.escape(START) + r".*?" + re.escape(END), re.S)
+    if not pattern.search(text):
+        sys.exit("Markers not found in README.md")
+    open(README, "w", encoding="utf-8").write(pattern.sub(lambda m: block, text))
+    print("README updated")
 
 
 if __name__ == "__main__":

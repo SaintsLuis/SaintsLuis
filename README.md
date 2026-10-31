@@ -110,14 +110,13 @@ Search, cart, user accounts, PayPal payments, and an admin panel for products an
 
 ## 📊 GitHub stats
 
+<!--START_STATS-->
 <div align="center">
 
-<img src="./assets/stats.svg" alt="GitHub stats" height="200"/>
-<img src="./assets/languages.svg" alt="Most used languages" height="200"/>
-
-<sub>Generated daily from my GitHub data by a workflow in this repo.</sub>
+<sub>Stats are generated automatically every day. They will appear here after the first run.</sub>
 
 </div>
+<!--END_STATS-->
 
 ---
 
