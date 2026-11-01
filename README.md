@@ -134,11 +134,13 @@ flowchart LR
 <!--START_STATS-->
 <div align="center">
 
-| 📦 Repos | ⭐ Stars | 🔥 Contributions (last year) | ⚡ Streak | 🏆 Best streak |
-|:-:|:-:|:-:|:-:|:-:|
-| **29** | **6** | **52** | **1 day** | **2 days** |
+| 📦 Repos | ⭐ Stars | 👥 Followers | 🔥 Contributions (last year) | ⚡ Streak | 🏆 Best streak |
+|:-:|:-:|:-:|:-:|:-:|:-:|
+| **29** | **6** | **5** | **53** | **1 day** | **2 days** |
 
-<sub>Updated automatically on 2026-10-31.</sub>
+**Top languages:** TypeScript **73%** · JavaScript **10%** · HTML **5%** · C# **4%** · Astro **4%**
+
+<sub>Updated automatically on 2026-11-01.</sub>
 
 </div>
 <!--END_STATS-->
