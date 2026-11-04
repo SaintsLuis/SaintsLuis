@@ -8,7 +8,7 @@
 <a href="https://www.linkedin.com/in/santosvluis/"><img src="https://img.shields.io/badge/LinkedIn-santosvluis-c8f031?style=for-the-badge&logo=linkedin&logoColor=c8f031&labelColor=151613" alt="LinkedIn"/></a>
 <a href="mailto:santosvluism@gmail.com"><img src="https://img.shields.io/badge/Email-Get%20in%20touch-c8f031?style=for-the-badge&logo=gmail&logoColor=c8f031&labelColor=151613" alt="Email"/></a>
 
-<br/><br/>
+
 
 <img src="https://komarev.com/ghpvc/?username=SaintsLuis&label=Profile%20views&color=c8f031&labelColor=151613&style=flat-square" alt="Profile views"/>
 
@@ -150,6 +150,6 @@ flowchart LR
 I'm open to full-stack opportunities.
 Reach me on [LinkedIn](https://www.linkedin.com/in/santosvluis/) or at [santosvluism@gmail.com](mailto:santosvluism@gmail.com).
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:c8f031,100:151613&height=100&section=footer" width="100%" alt=""/>
+<img src="https://raw.githubusercontent.com/SaintsLuis/SaintsLuis/main/assets/footer.svg" width="100%" alt="Let's build something together"/>
 
 </div>
