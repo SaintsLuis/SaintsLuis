@@ -1,11 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/SaintsLuis/SaintsLuis/main/assets/banner.png" alt="Luis Santos — Full-Stack Software Engineer" width="100%"/>
-
-<a href="https://github.com/SaintsLuis">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1200&color=C8F031&center=true&vCenter=true&width=640&lines=Hi%2C+I'm+Luis+Santos+%F0%9F%91%8B;Full-Stack+Software+Engineer;Web+%2B+Mobile+%2B+SaaS;NestJS+%C2%B7+React+%C2%B7+Next.js+%C2%B7+TypeScript;Always+learning+new+technologies#gh-dark-mode-only" alt="Typing SVG" />
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&pause=1200&color=4F6F00&center=true&vCenter=true&width=640&lines=Hi%2C+I'm+Luis+Santos+%F0%9F%91%8B;Full-Stack+Software+Engineer;Web+%2B+Mobile+%2B+SaaS;NestJS+%C2%B7+React+%C2%B7+Next.js+%C2%B7+TypeScript;Always+learning+new+technologies#gh-light-mode-only" alt="Typing SVG" />
-</a>
+<img src="https://raw.githubusercontent.com/SaintsLuis/SaintsLuis/main/assets/banner.svg" alt="Luis Santos — Full-Stack Software Engineer" width="100%"/>
 
 <br/>
 
